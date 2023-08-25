@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+        
+        .container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        
+        select {
+            padding: 8px;
+        }
+        
+        button {
+            background-color: #0026ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #001fdd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <title>Hitung Rata-rata Nilai</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Hitung Nilai Rata-rata</h2>
+        <form id="gradeForm">
+            <label for="name">Nama:</label>
+            <input type="text" id="name">
+            <br>
+
+            <label for="course">Mata Kuliah:</label>
+            <input type="text" id="course">
+            <br>
+
+            <label for="grade">Grade:</label>
+            <select id="grade">
+                <option value="">Pilih Grade</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+
+            <button type="button" onclick="calculateAverage()">Hitung</button>
+        </form>
+        <br>
+        <table id="resultTable">
+            <tr>
+                <th>Nama</th>
+                <th>Mata Kuliah</th>
+                <th>Grade</th>
+                <th>Nilai Rata-rata</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function calculateAverage() {
+            const gradeValues = {
+                A: 4,
+                B: 3,
+                C: 2,
+                D: 1,
+                E: 0
+            };
+            const name = document.getElementById("name").value;
+            const course = document.getElementById("course").value;
+            const selectedGrade = document.getElementById("grade").value;
+
+            if (selectedGrade in gradeValues) {
+                const gradeValue = gradeValues[selectedGrade];
+                const resultTable = document.getElementById("resultTable");
+
+                const totalGradeValues = gradeValue; // For simplicity, you can extend this for multiple subjects
+                const average = totalGradeValues / 1; // Assuming 1 subject for now
+
+                const newRow = resultTable.insertRow(-1);
+                newRow.insertCell(0).innerHTML = name;
+                newRow.insertCell(1).innerHTML = course;
+                newRow.insertCell(2).innerHTML = selectedGrade;
+                newRow.insertCell(3).innerHTML = average.toFixed(2);
+            }
+        }
+    </script>
+</body>
+
+</html>
